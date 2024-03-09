@@ -2,3 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+*{
+    background-image: url(src/assets/HomeBackground.svg);
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    min-height: "100vh";
+
+}
+
