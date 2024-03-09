@@ -1,10 +1,11 @@
 import React from 'react'
+import Home from './pages/Home'
 
 function App() {
-  return (
-    <div>
-      <h1 className="text-red-900">Hello World</h1>
-    </div>
+
+     return (
+   <Home/>
+
   )
 }
 
