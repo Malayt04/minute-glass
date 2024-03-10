@@ -11,6 +11,7 @@ function FormField({ labelName, inputType, isTextArea, value, handleChange }) {
         <br/>
         {isTextArea ? (
             <textarea
+            onChange={handleChange}
             required
             value={value}
             rows={10}
