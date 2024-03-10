@@ -5,7 +5,7 @@ import "@chainlink/contracts/src/v0.8/interfaces/AggregatorV3Interface.sol";
 import "./PriceConvertor.sol";
 
 
-contract Minute_Glass {
+contract minute_glass {
 
     using PriceConverter for uint256;
 
@@ -39,8 +39,17 @@ contract Minute_Glass {
         return numberOfSubscriptions - 1;
     }
 
-    function getSubscription(uint256 _subscription_num) public view  returns (string memory) {
+    function getSubscriptionName(uint256 _subscription_num) public view  returns (string memory) {
         return subscriptions[_subscription_num].website_name;
+    }
+    function getSubscriptionUrl(uint256 _subscription_num) public view  returns (string memory) {
+        return subscriptions[_subscription_num].website__url;
+    }
+    function getSubscriptionPrice(uint256 _subscription_num) public view  returns (uint256) {
+        return subscriptions[_subscription_num].price_per_hr;
+    }
+    function getSubscriptionAddress(uint256 _subscription_num) public view  returns (address) {
+        return subscriptions[_subscription_num].website_wallet;
     }
 
     function accessGrant(uint256 _product_number) public view returns(bool grant){
@@ -63,26 +72,27 @@ contract Minute_Glass {
         userTransactions.push(Transaction(msg.sender, msg.value));
     }
 
-    function showTransactions() public view returns(Transaction[] memory){
-        return userTransactions;
+    function usd_to_eth() public view returns(uint256){
+        return PriceConverter.getPrice();
     }
 
-    function rupee_to_matic(uint256 rupee) public view returns(uint256){
-        return PriceConverter.getConversionRate(rupee);
-    }
 
-    function calculateCharge(uint256 subscription_number,uint256 time_in_sec) public view returns(uint256){
-        uint256 perSecondRate = subscriptions[subscription_number].price_per_hr / 3600;
-        uint256 total_charge = perSecondRate * time_in_sec;
-        return PriceConverter.getConversionRate(total_charge);
+    function CalculateCharge(uint256 subscription_number, uint256 time_in_sec) public view returns (uint256) {
+        require(subscriptions[subscription_number].price_per_hr >= 0, "Subscription not found");
+
+        uint256 total_charge_in_rupees = subscriptions[subscription_number].price_per_hr * time_in_sec / 3600;
+        uint256 total_charge_in_usd = total_charge_in_rupees / 80;
+
+        uint256 total_charge_in_eth = PriceConverter.getConversionRate(total_charge_in_usd);
+
+        return total_charge_in_eth;
     }
 
     function getUserBalance() public view returns(uint256){
         return msg.sender.balance;
     }
 
-    //website_1,website_1_desc,website_1_img,website_1_url,80,0xAb8483F64d9C6d1EcF9b849Ae677dD3315835cb2
     //website_2,website_2_desc,website_2_img,website_2_url,80,0x4B20993Bc481177ec7E8f571ceCaE8A9e22C02db
-    
+    //website_1,website_1_desc,website_1_img,website_1_url,80,0x1Af1bb19e79F50Aec1d3682889D7D92e76EE9523
 
 }
