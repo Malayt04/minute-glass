@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-*{
+body{
     background-image: url(src/assets/HomeBackground.svg);
     background-size: cover;
     background-position: center;

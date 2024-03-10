@@ -1,7 +1,6 @@
 import React from 'react';
 import HomeBackground from '../assets/HomeBackground.svg';
 import Organisation from '../components/Organisation';
-import CompanyLogo from '../components/CompanyLogo';
 import Wait from '../components/Wait';
 
 const Home = () => {
@@ -11,7 +10,7 @@ const Home = () => {
       display:"flex"
     }}>
         <div>
-        <CompanyLogo />
+        
         <Wait classes="mt-[700px] ml-[150px]"/>
         </div>
      <div>
@@ -24,8 +23,8 @@ const Home = () => {
      </div>
      
      <div>
-     <Wait classes="mt-[700px] ml-[150px] mt-[30px]"/>
-     <Wait classes="mt-[700px] ml-[150px]"/>
+     <Wait classes="mt-[200px] ml-[150px] mt-[30px]"/>
+     <Wait classes="mt-[500px] ml-[150px]"/>
      </div>
      
       
