@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import FormField from '../components/FormField';
-import { checkIfImage } from '../utils';
 import { ethers } from 'ethers';
 import { useStateContext } from '../context';
 import {useNavigate} from 'react-router-dom'
@@ -16,18 +15,19 @@ function AddSubscription() {
     uploadImage: ''
   });
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    checkIfImage(formData.uploadImage, async (exists) => {
-      if (exists) {
+  const handleSubmit =async (e) => {
+    try {
+      e.preventDefault();
+    
         await createSubscription({ ...formData, price: ethers.utils.parseUnits(formData.price, 18) });
         navigate('/');
-      } else {
-        alert('Provide a valid image URL');
-        setFormData({ ...formData, uploadImage: '' });
-      }
-    });
-  };
+    } catch (error) {
+      console.log(error);
+    }
+    
+      } 
+  
+  
   
   const handleChange = (fieldName, e) => {
     setFormData({ ...formData, [fieldName]: e.target.value });

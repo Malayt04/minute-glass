@@ -1,15 +1,16 @@
 import React, { useContext, createContext } from 'react';
-import {useAddress, useMetamask, useContract, useContractWrite } from "@thirdweb-dev/react";
+import { useAddress, useContract, useMetamask, useContractWrite } from '@thirdweb-dev/react';
 
 const StateContext = createContext();
 
 export const StateContextProvider = ({children})=>{
-    const { contract } = useContract("0x80a1f5F7BbeF5Fbe20Bead1591f96f1897811beD");
+    const { contract } = useContract("0x328c2312fB35B18045C266dd1Ed132bbfb3E1a19");
     const {mutateAsync: createSubscription}=useContractWrite(contract,'createSubscription')
     const address =useAddress();
     const connect = useMetamask();
     const publishSubscription = async (form) =>{
         try {
+            
         const data = await createSubscription({
             args:[
                 address,
@@ -25,7 +26,7 @@ export const StateContextProvider = ({children})=>{
             console.log(error)
         }
     }
-
+   
     return (
         <StateContext.Provider
         value={{

@@ -24,7 +24,7 @@ contract Minute_Glass {
     uint256 public numberOfSubscriptions = 0;
 
 
-    function createSubscription(string memory _website_nmae, string memory _website_description, string memory _image, string memory _website_url, uint256 _price_per_hr, address payable  _website_wallet) public returns(uint256){
+    function createSubscription(string memory _website_nmae, string memory _website_description, string memory _image, string memory _website_url, uint256 _price_per_hr, address payable  _websitewallet) public returns(uint256){
         Subscription storage subscription = subscriptions[numberOfSubscriptions];
 
         subscription.id = numberOfSubscriptions;
@@ -33,7 +33,7 @@ contract Minute_Glass {
         subscription.image = _image;
         subscription.website__url = _website_url;
         subscription.price_per_hr = _price_per_hr;
-        subscription.website_wallet = _website_wallet;
+        subscription.website_wallet = _websitewallet;
 
         numberOfSubscriptions++;
         return numberOfSubscriptions - 1;
