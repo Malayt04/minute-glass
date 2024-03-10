@@ -63,7 +63,7 @@ contract Minute_Glass {
         userTransactions.push(Transaction(msg.sender, msg.value));
     }
 
-    function showTransactions() public view returns(Transaction[]){
+    function showTransactions() public view returns(Transaction[] memory){
         return userTransactions;
     }
 
@@ -83,6 +83,5 @@ contract Minute_Glass {
 
     //website_1,website_1_desc,website_1_img,website_1_url,80,0xAb8483F64d9C6d1EcF9b849Ae677dD3315835cb2
     //website_2,website_2_desc,website_2_img,website_2_url,80,0x4B20993Bc481177ec7E8f571ceCaE8A9e22C02db
-    
 
 }
