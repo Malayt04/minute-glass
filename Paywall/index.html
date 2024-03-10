@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Paywall Website</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+  .container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  #paywall {
+    display: none;
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <h1>Welcome to our website!</h1>
+  <p>Content goes here...</p>
+  <div id="paywall">
+    <h2>Unlock Premium Content</h2>
+    <p>To access premium content, please subscribe:</p>
+    <button id="subscribeBtn">Subscribe Now</button>
+  </div>
+</div>
+
+<script>
+  const paywall = document.getElementById('paywall');
+  const subscribeBtn = document.getElementById('subscribeBtn');
+
+  // Check if user is subscribed
+  const isSubscribed = false; // Change this to true if user is subscribed
+
+  if (!isSubscribed) {
+    paywall.style.display = 'block';
+
+    subscribeBtn.addEventListener('click', () => {
+      // Your payment integration logic goes here
+      alert('Redirecting to payment gateway...');
+      // For demonstration purposes, after clicking subscribe, we'll simulate subscription
+      setTimeout(() => {
+        alert('Subscription successful!');
+        paywall.style.display = 'none';
+      }, 2000); // 2 seconds delay
+    });
+  }
+</script>
+</body>
+</html>

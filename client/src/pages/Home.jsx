@@ -1,7 +1,7 @@
 import React from 'react';
-import HomeBackground from '../assets/HomeBackground.svg';
 import Organisation from '../components/Organisation';
 import Wait from '../components/Wait';
+import { ConnectWallet as WalletButton } from "@thirdweb-dev/react";
 
 const Home = () => {
   return (
